@@ -1,0 +1,13 @@
+$primaryColor: #333;
+$secondaryColor: #eff;
+$bkgColor: #000;
+
+body {
+  padding: 0;
+  margin: 0;
+  background: $bkgColor;
+  div {
+    color: $primaryColor;
+    padding: 0;
+  }
+}
