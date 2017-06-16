@@ -4,9 +4,8 @@ $(document).ready(function() {
     var formJson = '{';
     for(i in formArray) {
       formJson += '"' + formArray[i].name + '":"' + formArray[i].value + '"';
-      if(i < formArray.length - 1) {
+      if(i < formArray.length - 1)
         formJson += ',';
-      }
     }
     formJson += '}';
     return formJson;
@@ -14,7 +13,7 @@ $(document).ready(function() {
 
   var baseUrl = 'http://zssn-backend-example.herokuapp.com';
 
-  $('#newSurvivor').submit(function(e) {
+  $('#sign-up-form').submit(function(e) {
     e.preventDefault();
     var path = '/api/people';
     var data = formToJson($(this));

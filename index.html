@@ -5,6 +5,9 @@
 
   <!-- Stylesheets -->
   <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/jquery-jvectormap-2.0.3.css">
+
+  <!-- Custom stylesheets are minified by SASS pre-compiler -->
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
@@ -15,15 +18,55 @@
     </a>
   </header>
 
-  <form id="newSurvivor" action="http://zssn-backend-example.herokuapp.com/api/people.json" method="post">
-    <input type="text" name="name" value="Jequiti">
-    <input type="number" name="age" value="22">
-    <input type="text" name="gender" value="M">
-    <input type="text" name="items" value="Water:1">
-    <input type="submit" value="Submit">
-  </form>
+  <div class="landing">
+    <section id="sign-in" class="text-center">
+      <header>
+        <h2>Are you a survivor?</h2>
+      </header>
+      <form id="sign-in-form">
+        <input name="name" class="text-center" type="text" placeholder="Your name">
+      </form>
+      <div class="btn btn-default">
+        Sign in
+      </div>
+      <div id="sign-up-btn" class="btn btn-default">
+        Sign up
+      </div>
+    </section>
+    <section id="sign-up">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <!-- @TODO: Add location map -->
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <form id="sign-up-form" action="http://zssn-backend-example.herokuapp.com/api/people.json" method="post">
+              <div class="input-group">
+                <span class="input-group-addon">NAME</span>
+                <input type="text" name="name" value="Jequiti">
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon">AGE</span>
+                <input type="text" name="age" value="22">
+              </div>
+              <input type="text" name="gender" value="M">
+              <input type="text" name="items" value="Water:1">
+              <input type="submit" value="Submit">
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 
   <!-- Scripts -->
+  <!-- @TODO: replace jQuery js file by its minified version -->
   <script src="assets/js/jquery-3.2.1.js"></script>
+  <script src="assets/js/d3.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/jquery-jvectormap-2.0.3.min.js"></script>
+
+  <!-- Custom js files are not minified for the sake of comprehension -->
+  <script src="assets/js/scripts.js"></script>
   <script src="assets/js/requests.js"></script>
 </body>

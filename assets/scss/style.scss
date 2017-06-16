@@ -1,13 +1,98 @@
-$primaryColor: #333;
-$secondaryColor: #eff;
-$bkgColor: #000;
+$primaryColor: #c1161c;
+$primaryAlphaColor: rgba(193,22,28,.5);
+$secondaryColor: #fff;
+$secondarAlphaColor: rgba(255,255,255,.5);
+$bkgColor: #333;
+$bkgAlphaColor: rgba(0,0,0,.5);
+$fontStack: 'Oswald', sans-serif;
+
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/Oswald.woff2');
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+  * {
+    box-sizing: inherit;
+  }
+}
 
 body {
+  font-family: $fontStack;
   padding: 0;
   margin: 0;
-  background: $bkgColor;
-  div {
-    color: $primaryColor;
-    padding: 0;
+  background-color: $bkgColor;
+  color: $secondaryColor;
+  ::selection {
+    background-color: $primaryColor;
+  }
+}
+
+p { font-size: 1.6em; }
+h1 { font-size: 5em; }
+h2 { font-size: 3.7em; }
+h3 { font-size: 2.8em; }
+
+header {
+  position: relative;
+}
+
+.landing {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+  background:
+    radial-gradient($bkgAlphaColor 15%, transparent 16%) 0 0,
+    radial-gradient($bkgAlphaColor 15%, transparent 16%) 8px 8px,
+    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+  background-size:16px 16px;
+  background-color: $primaryAlphaColor;
+  border-width: 4px;
+  border-color: rgba(0,0,0,.5);
+  border-style: solid none;
+  * {
+      transition: all .3s;
+  }
+  &::before {
+    content: '';
+    top: -10px;    right: -10px;    bottom: -10px;    left: -10px;
+    position: absolute;
+    z-index: -1;
+    background-image: url('../img/walking-dead.jpg');
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  #sign-in, #sign-up {
+    position: relative;
+    top: 0;
+    height: 100%;
+    padding: 50px 0;
+  }
+  &.ln {
+    #sign-in, #sign-up { top: -100%; }
+  }
+  form {
+    .input-group-addon {
+      background: $bkgAlphaColor;
+      color: $secondaryColor;
+      border: none;
+      border-radius: 0;
+      margin: 10px 0;
+      text-transform: uppercase;
+    }
+    input[type="text"] {
+      background: $bkgAlphaColor;
+      border: none;
+      width: 100%;
+      height: 50px;
+      font-size: 2em;
+      padding: 15px 5px;
+    }
   }
 }
