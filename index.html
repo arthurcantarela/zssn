@@ -2,9 +2,12 @@
 <html>
 <head>
   <title>ZSSN</title>
+  <meta name="viewport" content="initial-scale=1.0">
+  <meta charset="utf-8">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/jquery-jvectormap-2.0.3.css">
 
   <!-- Custom stylesheets are minified by SASS pre-compiler -->
@@ -17,19 +20,51 @@
       <img itemprop="logo" src="zssn.png" alt="ZSSN (Zombie Survival Social Network)">
     </a>
   </header>
-
-  <div class="landing">
+  <table class="table">
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Age</td>
+        <td>Gender</td>
+        <td>Water</td>
+        <td>Food</td>
+        <td>Med</td>
+        <td>Ammo</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Name</td>
+        <td>Age</td>
+        <td>Gender</td>
+        <td>Water</td>
+        <td>Food</td>
+        <td>Med</td>
+        <td>Ammo</td>
+      </tr>
+        <tr>
+          <td>Name</td>
+          <td>Age</td>
+          <td>Gender</td>
+          <td>Water</td>
+          <td>Food</td>
+          <td>Med</td>
+          <td>Ammo</td>
+        </tr>
+    </tbody>
+  </table>
+  <div class="landing" style="display: none">
     <section id="sign-in" class="text-center">
       <header>
         <h2>Are you a survivor?</h2>
       </header>
       <form id="sign-in-form">
-        <input name="name" class="text-center" type="text" placeholder="Your name">
+        <input name="name" class="text-center form-control" type="text" placeholder="Your name">
       </form>
-      <div class="btn btn-default">
+      <div id="sign-in-btn" class="ln-btn">
         Sign in
       </div>
-      <div id="sign-up-btn" class="btn btn-default">
+      <div id="sign-up-btn" class="ln-btn ln-btn-success">
         Sign up
       </div>
     </section>
@@ -37,21 +72,70 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <!-- @TODO: Add location map -->
+            <div id="map"></div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <form id="sign-up-form" action="http://zssn-backend-example.herokuapp.com/api/people.json" method="post">
-              <div class="input-group">
-                <span class="input-group-addon">NAME</span>
-                <input type="text" name="name" value="Jequiti">
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <input id="survivor-name" type="text" class="form-control text-center label-section" name="name" value="" spellcheck="false">
+                  <label for="survivor-name" class="input-group-addon">NAME</label>
+                </div>
               </div>
-              <div class="input-group">
-                <span class="input-group-addon">AGE</span>
-                <input type="text" name="age" value="22">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <input id="survivor-age" type="text" class="form-control text-center number-only label-section" name="age" value="">
+                      <label for="survivor-age" class="input-group-addon">AGE</label>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                      <div class="label-section">
+                        <input id="survivor-gender-male" type="radio" name="gender" value="M">
+                        <label for="survivor-gender-male"><i class="fa fa-male" aria-hidden="true"></i></label>
+                        <input id="survivor-gender-female" type="radio" name="gender" value="F">
+                        <label for="survivor-gender-female"><i class="fa fa-female" aria-hidden="true"></i></label>
+                      </div>
+                      <label class="input-group-addon">GENDER</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                      <input id="survivor-water" type="text" class="form-control text-center number-only label-section" name="water" value="0">
+                      <label for="survivor-water" class="input-group-addon">
+                        <span class="input-decrease">-</span> WATER <span class="input-increase">+</span>
+                      </label>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                      <input id="survivor-medication" type="text" class="form-control text-center number-only label-section" name="medication" value="0">
+                      <label for="survivor-medication" class="input-group-addon">
+                        <span class="input-decrease">-</span> MED <span class="input-increase">+</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                      <input id="survivor-food" type="text" class="form-control text-center number-only label-section" name="food" value="0">
+                      <label for="survivor-food" class="input-group-addon">
+                        <span class="input-decrease">-</span> FOOD <span class="input-increase">+</span>
+                      </label>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                      <input id="survivor-ammunition" type="text" class="form-control text-center number-only label-section" name="ammunition" value="0">
+                      <label for="survivor-ammunition" class="input-group-addon">
+                        <span class="input-decrease">-</span> AMMO <span class="input-increase">+</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <input type="text" name="gender" value="M">
-              <input type="text" name="items" value="Water:1">
-              <input type="submit" value="Submit">
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                  <input type="submit" class="ln-btn ln-btn-success" value="Register">
+                </div>
+              </div>
             </form>
           </div>
         </div>
@@ -65,6 +149,10 @@
   <script src="assets/js/d3.min.js"></script>
   <script src="assets/js/bootstrap.min.js"></script>
   <script src="assets/js/jquery-jvectormap-2.0.3.min.js"></script>
+  <script src="assets/js/google-maps-api.js"></script>
+  <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCExj1jZmc_IzVqKHifVzGVs6a7_PaPkxs&callback=initMap">
+  </script>
 
   <!-- Custom js files are not minified for the sake of comprehension -->
   <script src="assets/js/scripts.js"></script>

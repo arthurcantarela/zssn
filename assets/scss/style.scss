@@ -41,6 +41,34 @@ header {
   position: relative;
 }
 
+#map {
+  width: 100%;
+  height: 400px;
+}
+
+.ln-btn {
+  display: inline-block;
+  border: 4px solid $secondaryColor;
+  color: $secondaryColor;
+  padding: 6px 12px;
+  font-size: 1.5em;
+  width: auto;
+  margin: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all .3s;
+  &:hover {
+    background: $bkgAlphaColor;
+  }
+  &.ln-btn-success {
+    background: $secondaryColor;
+    color: $bkgColor;
+    &:hover {
+      border-color: $bkgColor;
+    }
+  }
+}
+
 .landing {
   position: relative;
   height: 500px;
@@ -55,9 +83,6 @@ header {
   border-width: 4px;
   border-color: rgba(0,0,0,.5);
   border-style: solid none;
-  * {
-      transition: all .3s;
-  }
   &::before {
     content: '';
     top: -10px;    right: -10px;    bottom: -10px;    left: -10px;
@@ -68,31 +93,82 @@ header {
     background-size: cover;
     background-repeat: no-repeat;
   }
+  &:not(.si) #sign-in-form {
+    input {
+      max-height: 0;
+      padding: 0;
+      border-bottom: 0px solid #000;
+    }
+  }
+  &.si #sign-in-form {
+    input {
+      max-height: 100px;
+    }
+  }
   #sign-in, #sign-up {
     position: relative;
     top: 0;
     height: 100%;
     padding: 50px 0;
+    transition: all .3s;
   }
   &.ln {
     #sign-in, #sign-up { top: -100%; }
   }
   form {
-    .input-group-addon {
-      background: $bkgAlphaColor;
+    span.input-increase,
+    span.input-decrease {
+      cursor: pointer;
+      background: $secondaryColor;
+      color: $bkgColor;
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      line-height: 15px;
+      font-weight: bold;
+    }
+    label { user-select: none; }
+    .label-section + label {
+      background: $bkgColor;
       color: $secondaryColor;
       border: none;
       border-radius: 0;
       margin: 10px 0;
+      min-width: 50px;
       text-transform: uppercase;
     }
     input[type="text"] {
       background: $bkgAlphaColor;
+      color: $secondaryColor;
       border: none;
-      width: 100%;
+      border-radius: 0;
       height: 50px;
       font-size: 2em;
       padding: 15px 5px;
+      margin: 10px 0 0;
+      border-bottom: 1px solid #000;
+      transition: all .3s;
+      &:focus {
+        border-bottom: 1px solid $secondaryColor;
+        box-shadow: none;
+      }
+    }
+    input[type="radio"] {
+      display: none;
+      & + label {
+        color: $bkgAlphaColor;
+        font-size: 4em;
+        line-height: 50px;
+        margin: 0 10px;
+        cursor: pointer;
+        // text-shadow: 0px 0px 1px #000;
+        // opacity: .5;
+        transition: all .3s;
+      }
+      &:checked + label {
+        color: $secondaryColor;
+      }
     }
   }
 }
