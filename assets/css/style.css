@@ -78,12 +78,6 @@ header {
     background-position: top center;
     background-size: cover;
     background-repeat: no-repeat; }
-  .landing:not(.si) #sign-in-form input {
-    max-height: 0;
-    padding: 0;
-    border-bottom: 0px solid #000; }
-  .landing.si #sign-in-form input {
-    max-height: 100px; }
   .landing #sign-in, .landing #sign-up {
     position: relative;
     top: 0;

@@ -93,18 +93,6 @@ header {
     background-size: cover;
     background-repeat: no-repeat;
   }
-  &:not(.si) #sign-in-form {
-    input {
-      max-height: 0;
-      padding: 0;
-      border-bottom: 0px solid #000;
-    }
-  }
-  &.si #sign-in-form {
-    input {
-      max-height: 100px;
-    }
-  }
   #sign-in, #sign-up {
     position: relative;
     top: 0;

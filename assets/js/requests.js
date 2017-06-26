@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var preventInputEmptyness = function(inputId) {
+  function preventInputEmptyness(inputId) {
     var selector = '#' + inputId;
     var value;
     if($(selector).val() && $(selector).val().length > 0)
@@ -7,7 +7,7 @@ $(document).ready(function() {
     return value;
   }
 
-  var getSurvivorData = function() {
+  function getSurvivorData() {
     var items = {
       Water: $('form#sign-up-form input[name="water"]').val(),
       Food: $('form#sign-up-form input[name="food"]').val(),
