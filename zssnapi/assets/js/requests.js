@@ -41,12 +41,13 @@ $(document).ready(function() {
 
   $('#sign-up-form').submit(function(e) {
     e.preventDefault();
-    var path = '/api/people';
+    var path = '/api/people.json';
     var data = getSurvivorData();
     $.ajax({
       type: 'POST',
       url: baseUrl + path,
       data: data,
+      contentType: 'application/x-www-form-urlencoded',
       success: function(response) {
         console.log('Success');
         console.log(response);

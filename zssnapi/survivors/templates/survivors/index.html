@@ -1,0 +1,34 @@
+{% load static %}
+<img src="{% static 'img/walking-dead.jpg' %}" alt="My image"/>
+{% if survivorsList %}
+  <table>
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Age</td>
+        <td>Lat</td>
+        <td>Lng</td>
+        <td>Water</td>
+        <td>Food</td>
+        <td>Medication</td>
+        <td>Ammunition</td>
+      </tr>
+    </thead>
+    <tbody>
+    {% for survivor in survivorsList %}
+      <tr>
+        <td>{{survivor.name}}</td>
+        <td>{{survivor.age}}</td>
+        <td>{{survivor.location.lat}}</td>
+        <td>{{survivor.location.lng}}</td>
+        <td>{{survivor.items.water}}</td>
+        <td>{{survivor.items.food}}</td>
+        <td>{{survivor.items.med}}</td>
+        <td>{{survivor.items.ammo}}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>No survivors to show</p>
+{% endif %}
