@@ -25,7 +25,9 @@ SECRET_KEY = 'v=1h6n4ul!jl8y^4o1&s!+cebl(-&o!-g=wq(_s9vwgxzva6rv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'canta-zssn.herokuapp.com'
+]
 
 
 # Application definition
