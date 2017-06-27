@@ -1,1 +1,1 @@
-web: gunicorn zssnapi.wsgi
+web: python manage.py collectstatic --noinput; gunicorn zssnapi.wsgi

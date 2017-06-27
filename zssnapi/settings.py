@@ -26,7 +26,8 @@ SECRET_KEY = 'v=1h6n4ul!jl8y^4o1&s!+cebl(-&o!-g=wq(_s9vwgxzva6rv'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'canta-zssn.herokuapp.com'
+    'canta-zssn.herokuapp.com',
+    'localhost'
 ]
 
 
@@ -40,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'gunicorn'
 ]
 
 MIDDLEWARE = [
@@ -120,9 +120,16 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-STATIC_URL = '/assets/'
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-  os.path.join(BASE_DIR, 'assets'),
+    os.path.join(PROJECT_ROOT, 'static'),
 )
