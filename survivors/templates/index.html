@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,12 +7,12 @@
   <meta charset="utf-8">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/jquery-jvectormap-2.0.3.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-jvectormap-2.0.3.css' %}">
 
   <!-- Custom stylesheets are minified by SASS pre-compiler -->
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
@@ -34,24 +35,29 @@
       </tr>
     </thead>
     <tbody>
+      {% for survivor in survivors %}
       <tr>
-        <td>Name</td>
-        <td>Age</td>
-        <td>Gender</td>
-        <td>Water</td>
-        <td>Food</td>
-        <td>Med</td>
-        <td>Ammo</td>
+        <td>
+          {{ survivor.name }}
+        </td>
+        <td>
+          {{ survivor.age }}
+        </td>
+        <td></td>
+        <td>
+          {{ survivor.items.water }}
+        </td>
+        <td>
+          {{ survivor.items.food }}
+        </td>
+        <td>
+          {{ survivor.items.med }}
+        </td>
+        <td>
+          {{ survivor.items.ammo }}
+        </td>
       </tr>
-        <tr>
-          <td>Name</td>
-          <td>Age</td>
-          <td>Gender</td>
-          <td>Water</td>
-          <td>Food</td>
-          <td>Med</td>
-          <td>Ammo</td>
-        </tr>
+      {% endfor %}
     </tbody>
   </table>
   <div class="landing" style="display: dnone">
@@ -76,7 +82,7 @@
             <div id="map"></div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <form id="sign-up-form" action="http://zssn-backend-example.herokuapp.com/api/people.json" method="post">
+            <form id="sign-up-form">
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <input id="survivor-name" type="text" class="form-control text-center label-section" name="name" value="" spellcheck="false">
@@ -146,16 +152,16 @@
 
   <!-- Scripts -->
   <!-- @TODO: replace jQuery js file by its minified version -->
-  <script src="assets/js/jquery-3.2.1.js"></script>
-  <script src="assets/js/d3.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/jquery-jvectormap-2.0.3.min.js"></script>
-  <script src="assets/js/google-maps-api.js"></script>
+  <script src="{% static 'js/jquery-3.2.1.js' %}"></script>
+  <script src="{% static 'js/d3.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery-jvectormap-2.0.3.min.js' %}"></script>
+  <script src="{% static 'js/google-maps-api.js' %}"></script>
   <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCExj1jZmc_IzVqKHifVzGVs6a7_PaPkxs&callback=initMap">
   </script>
 
   <!-- Custom js files are not minified for the sake of comprehension -->
-  <script src="assets/js/scripts.js"></script>
-  <script src="assets/js/requests.js"></script>
+  <script src="{% static 'js/scripts.js' %}"></script>
+  <script src="{% static 'js/requests.js' %}"></script>
 </body>
